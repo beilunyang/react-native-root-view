@@ -7,9 +7,7 @@ import {
 
 if (AppRegistry.setWrapperComponentProvider) {
   AppRegistry.setWrapperComponentProvider(() => {
-    return class extends Component {
-      static displayName = 'RootViewWrapper';
-
+    return class RootViewWrapper extends Component {
       components = [];
 
       componentDidMount() {
@@ -19,7 +17,7 @@ if (AppRegistry.setWrapperComponentProvider) {
         });
         DeviceEventEmitter.addListener('removeComponent', (id = null, callback) => {
           if (typeof id === 'number') {
-            this.components.splice(this.components[id], 1);
+            this.components[id] = undefined;
           } else {
             this.components = [];
           }
@@ -41,17 +39,52 @@ if (AppRegistry.setWrapperComponentProvider) {
     };
   });
 } else {
-  AppRegistry.registerComponent = () => {
+  const originRegister = AppRegistry.registerComponent;
+  AppRegistry.registerComponent = (appKey, componentProvider, section) => {
+    const reactElement = componentProvider();
+    const newComponetProvider = () => {
+      return class RootViewWrapper extends Component {
+              components = [];
 
+              componentDidMount() {
+                DeviceEventEmitter.addListener('setComponent', (component, callback) => {
+                  this.components.push(component);
+                  this.forceUpdate(callback);
+                });
+                DeviceEventEmitter.addListener('removeComponent', (id = null, callback) => {
+                  if (typeof id === 'number') {
+                    this.components[id] = undefined;
+                  } else {
+                    this.components = [];
+                  }
+                  this.forceUpdate(callback);
+                });
+              }
+
+              render() {
+                const components = this.components.map((component, idx) => (
+                  <component key={idx} />
+                ));
+                return (
+                  <View style={{ flex: 1 }}>
+                    {reactElement}
+                    {components}
+                  </View>
+                );
+              }
+            };
+    }
+
+    return originRegister(appKey, newComponetProvider, section);
   };
 }
 
-export default {
-  id: -1,
+let id = -1;
 
+export default {
   set(component, callback) {
     DeviceEventEmitter.emit('setComponent', {
-      id: ++this.id,
+      id: ++id,
       component,
     }, callback);
     return id;

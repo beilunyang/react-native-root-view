@@ -1,0 +1,28 @@
+{
+  "name": "react-native-root-view",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beilunyang/react-native-root-view.git"
+  },
+  "keywords": [
+    "root-view",
+    "inject-view",
+    "root-component",
+    "inject-component"
+  ],
+  "author": "beilunyang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/beilunyang/react-native-root-view/issues"
+  },
+  "homepage": "https://github.com/beilunyang/react-native-root-view#readme"
+}
