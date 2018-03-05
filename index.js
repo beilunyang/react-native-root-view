@@ -4,6 +4,7 @@ import {
   AppRegistry,
   DeviceEventEmitter,
 } from 'react-native';
+import StaticContainer from 'react-static-container';
 
 if (AppRegistry.setWrapperComponentProvider) {
   AppRegistry.setWrapperComponentProvider(() => {
@@ -35,7 +36,9 @@ if (AppRegistry.setWrapperComponentProvider) {
         const elements = this.elements.map(obj => obj.element);
         return (
           <View style={{ flex: 1 }}>
-            {this.props.children}
+            <StaticContainer>
+              {this.props.children}
+            </StaticContainer>
             {elements}
           </View>
         );
@@ -75,7 +78,9 @@ if (AppRegistry.setWrapperComponentProvider) {
                 const elements = this.elements.map(obj => obj.element);
                 return (
                   <View style={{ flex: 1 }}>
-                    <Comp {...this.props} />
+                    <StaticContainer>
+                      <Comp {...this.props} />
+                    </StaticContainer>
                     {elements}
                   </View>
                 );

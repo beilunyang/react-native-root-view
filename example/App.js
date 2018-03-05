@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
-import rootView from './lib';
+import rootView from 'react-native-root-view';
 
 export default class App extends React.Component {
   num = 0;
