@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+- 8
+script: ''
+deploy:
+  provider: npm
+  email: 786220806@qq.com
+  api_key:
+    secure: itXCUbLTF5KMRpwOEkXcUjJ2isxQWpAJ38dql2Ex8lpiMuwEFL/6uNCuUNX2Rjt8E8jNtdw3jghqzyVWF+Cu2pG+NFiQGtDJhqx37Vs97y5IzQU+ESre5Ysta9Jefy572sAb5bBS3Qu1f9AHEBstb6D812RXM4htNJqoutrVjvbUJMHfbT/buGDWIAh4AePEPHlhoZ2lySbSdieIWaVwRUgRuwFwFipqkMDYU6WPQrcryt5RdPRzjoca27n8TdpigyUIndILt+3tdPDdf2PFGB6CfJqYxgUpU95CNY2verltEv53A5SbLhd1UFafj7E1QRDheyjMef2AHLUULTJV8Is3s36KPGE1bwsqDYSN/4nh/LK8ry3ftBOK/PQOSzTmqtUTC+TBYT8UH8rM6AAxUyKagxZx3XCzq5Kv7FZH2xeSj/zv0fHCRg5Yfy76I1B6/P33Dm+k602Q11hoEY0TYlSJnDFRaY+4XZA1mtrvT/hpqcKbYFzlSXRxVm2qDLY8nUQ9B4XiUl2akxWtmq1kPvVsqw2Sk8wMXb5fFPh8p6xQ+U4RXCXqzcEzqxDWLJPF56kaRxuvplscBAsPoTbzxBvBcmYlWgj2DTPTe8OEStxBxtIvJ9XtpqKePqYuQgDdxykqWh41/yPY0rYm25F7eaiDjr6l6D+I3gr2T4aNhM0=
+  skip_cleanup: true
+  on:
+    tags: true
+  tag: next
+cache: yarn
+branches:
+  only:
+  - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
