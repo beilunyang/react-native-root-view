@@ -10,7 +10,6 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
-  tag: next
 cache: yarn
 branches:
   only:
