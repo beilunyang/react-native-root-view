@@ -28,6 +28,7 @@ rootView.remove(id);
 git clone https://github.com/beilunyang/react-native-root-view
 cd react-native-root-view/example
 npm install
+npm install react-native-root-view
 npm start
 ```
 

@@ -1,6 +1,6 @@
 {
   "name": "react-native-root-view",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "",
   "main": "index.js",
   "directories": {
@@ -26,8 +26,6 @@
   },
   "homepage": "https://github.com/beilunyang/react-native-root-view#readme",
   "dependencies": {
-    "react": "^16.2.0",
-    "react-native": "^0.54.0",
     "react-static-container": "^1.0.2"
   }
 }
